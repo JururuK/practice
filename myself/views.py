@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 # Create your views here.
 def introduce(myself) :
-    return HttpResponse('Calm down!')
+    return render(myself, 'index.html')
