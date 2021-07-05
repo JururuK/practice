@@ -71,7 +71,7 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 venv/
-
+#이 폴더의 내용은 추적하지 않음
 .env
 
 db.sqlite3
