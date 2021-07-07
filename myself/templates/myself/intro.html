@@ -8,16 +8,20 @@
         height: 48px;
         width: 48px;
         border-radius: .5rem;
+        display: inline-block
     }
     </style>
-<div style = "text-align:center; height : 30rem; background-color : #c5eab7; margin: 3rem; border-radius: 1rem;">
-    <h1>여백의 美 </h1>
+<div style = "
+text-align:center; height : 30rem; background-color : #c5eab7;
+margin: 3rem; border-radius: 1rem; overflow:scroll;
+font-size : 2rem">
+    <h1>여백의 美 </h1> <!--overflow는 넘치지않게. scroll, hidden 등-->
 
-<div class='testing' style = "display: block">block</div> <!-- 너비를 다 가져감 -->
-<div class='testing' style = "display: inline">inline</div>
-<div class='testing' style = "display: none">none</div>
-<div class='testing' style = "display: inline-block">inline-block</div>
-<div class='testing' ></div>
+
+<div class='testing' style = "height: 48px; width: 48px">48px</div>
+<div class='testing' style = "height: 3rem; width: 3rem">3rem</div> <!-- root 가 변하지 않으면 바뀌지 않음 -->
+<div class='testing' style = "height: 3em; width: 3em">3em</div>
+<div class='testing' style = "height: 30%; width: 30%">30%</div>
 
 </div>
 {% endblock %}
