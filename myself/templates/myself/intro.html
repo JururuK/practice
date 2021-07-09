@@ -4,7 +4,10 @@
 
     <div style = "text-align: center;">
     <h1>여백의 美 </h1> <!--overflow는 넘치지않게. scroll, hidden 등-->
-
+        <form action="/myself/intro/",method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-outline-dark px-5">
+        </form>
     <h3>{{ text }}</h3>
     </div>
 
