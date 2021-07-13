@@ -6,9 +6,10 @@
     <h1>여백의 美 </h1> <!--overflow는 넘치지않게. scroll, hidden 등-->
         <form action="/myself/intro/" method="POST">
             {% csrf_token %}
+            <input type="text" name="input_text"> <!-- 날짜 소리 이미지등 input 활용 -->
             <input type="submit" class="btn btn-outline-dark px-5">
         </form>
-    <h3>{{ text }}</h3>
+    <h3>{{ model_instance.text }}</h3>
     </div>
 
 </div>
