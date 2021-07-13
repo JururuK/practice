@@ -1,7 +1,12 @@
-from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
+from django.urls import reverse
+from django.views.generic import CreateView
+
 from myself.models import NewModel
 
 
@@ -14,11 +19,20 @@ def introduce(myself) :
         model_instance.text = temp
         model_instance.save() #사용자가 입력한 값을 db에 저장
 
-        data_list = NewModel.objects.all()
+        # post 만들어주고나서 get 으로 재연결. 안그러면 새로고침할때 입력안해도 추가됨.
 
-        return render(myself, 'myself/intro.html',
-                      context={'data_list': data_list})
+        return HttpResponseRedirect(reverse('myself:introduce')) #urls.py 안에 있는 내용
+
     else :
         data_list = NewModel.objects.all()
         return render(myself, 'myself/intro.html',
                       context={'data_list': data_list})
+
+
+
+#view 간단히.
+
+class AccountCreateView(CreateView) :
+    model = User
+    form_class = UserCreationForm
+    success_url =
