@@ -14,8 +14,11 @@ def introduce(myself) :
         model_instance.text = temp
         model_instance.save() #사용자가 입력한 값을 db에 저장
 
+        data_list = NewModel.objects.all()
+
         return render(myself, 'myself/intro.html',
-                      context={'model_instance': model_instance})
+                      context={'data_list': data_list})
     else :
+        data_list = NewModel.objects.all()
         return render(myself, 'myself/intro.html',
-                      context={'text':'GET METHOD!'})
+                      context={'data_list': data_list})
