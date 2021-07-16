@@ -41,3 +41,4 @@ class AccountCreateView(CreateView) :
 class AccountDetailView(DetailView) :
     model = User
     context_object_name = 'target_user'
+    template_name = 'myself/detail.html'
