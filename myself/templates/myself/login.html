@@ -1,16 +1,16 @@
 {% extends 'index.html' %}
-
+{% load bootstrap4 %}
 {% block content %}
 
 
-    <div class = "text-center">
+    <div class = "text-center mw-300 m-auto">
         <div class = "m-5"> <!-- 상하좌우 모두 5만큼-->
             <h4>Login</h4>
         </div>
         <div>
             <form action="{% url 'myself:login' %}" method = "post">
                 {% csrf_token %}
-                {{ form }}
+                {% bootstrap_form form %}
                 <div class = "m-4">
                     <input type="submit"
                            class="btn btn-info px-5">
