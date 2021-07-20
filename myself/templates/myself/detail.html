@@ -11,7 +11,10 @@
         <div>
             {{ target_user.date_joined }}
         </div>
-        <div>
+
+        {% if user == target_user %} {# 회원이 일치하지 않으면 뜨지 않게 #}
+
+        <div class = 'm-2'>
             <a href="{% url 'myself:update' pk=target_user.pk %}">
                 Update Info
             </a>
@@ -21,6 +24,8 @@
                 Quit
             </a>
         </div>
+
+        {% endif %}
     </div>
 
 

@@ -7,6 +7,7 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 
+from myself.forms import AccountCreationForm
 from myself.models import NewModel
 
 
@@ -45,7 +46,7 @@ class AccountDetailView(DetailView) :
 
 class AccountUpdateView(UpdateView) : #수정할 객체를 찾고, 저장하는 과정
     model = User
-    form_class = UserCreationForm
+    form_class = AccountCreationForm
     context_object_name = 'target_user'
     success_url = reverse_lazy('myself:introduce')
     template_name = 'myself/update.html'
