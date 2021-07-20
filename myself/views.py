@@ -5,7 +5,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
-from django.views.generic import CreateView, DetailView
+from django.views.generic import CreateView, DetailView, UpdateView
 
 from myself.models import NewModel
 
@@ -42,3 +42,10 @@ class AccountDetailView(DetailView) :
     model = User
     context_object_name = 'target_user'
     template_name = 'myself/detail.html'
+
+class AccountUpdateView(UpdateView) : #수정할 객체를 찾고, 저장하는 과정
+    model = User
+    form_class = UserCreationForm
+    context_object_name = 'target_user'
+    success_url = reverse_lazy('myself:introduce')
+    template_name = 'myself/update.html'
