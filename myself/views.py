@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render
 
 # Create your views here.
@@ -54,16 +54,16 @@ class AccountUpdateView(UpdateView) : #수정할 객체를 찾고, 저장하는 
     template_name = 'myself/update.html'
 
     def get(self,myself,*args,**kwargs):
-        if myself.user.is_authenticated:
+        if myself.user.is_authenticated and self.get_object() == myself.user:
             return super().get(myself,*args,**kwargs)
         else :
-            return HttpResponseRedirect(reverse('myself:login'))
+            return HttpResponseForbidden()
 
     def post(self,myself,*args,**kwargs):
-        if myself.user.is_authenticated:
+        if myself.user.is_authenticated and self.get_object() == myself.user:
             return super().post(myself,*args,**kwargs)
         else :
-            return HttpResponseRedirect(reverse('myself:login'))
+            return HttpResponseForbidden()
 
 class AccountDeleteView(DeleteView) :
     model = User
@@ -71,14 +71,14 @@ class AccountDeleteView(DeleteView) :
     success_url = reverse_lazy('myself:login')
     template_name = 'myself/delete.html'
 
-    def get(self, myself, *args, **kwargs):
-        if myself.user.is_authenticated:
-            return super().get(myself, *args, **kwargs)
-        else:
-            return HttpResponseRedirect(reverse('myself:login'))
+    def get(self,myself,*args,**kwargs):
+        if myself.user.is_authenticated and self.get_object() == myself.user:
+            return super().get(myself,*args,**kwargs)
+        else :
+            return HttpResponseForbidden()
 
-    def post(self, myself, *args, **kwargs):
-        if myself.user.is_authenticated:
-            return super().post(myself, *args, **kwargs)
-        else:
-            return HttpResponseRedirect(reverse('myself:login'))
+    def post(self,myself,*args,**kwargs):
+        if myself.user.is_authenticated and self.get_object() == myself.user:
+            return super().post(myself,*args,**kwargs)
+        else :
+            return HttpResponseForbidden()
