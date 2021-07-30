@@ -56,8 +56,10 @@ class AccountUpdateView(UpdateView) : #수정할 객체를 찾고, 저장하는 
     model = User
     form_class = AccountCreationForm
     context_object_name = 'target_user'
-    success_url = reverse_lazy('myself:introduce')
     template_name = 'myself/update.html'
+
+    def get_success_url(self):
+        return reverse('myself:detail',kwargs={'pk':self.object.pk})
 
 has_ownership = [login_required,account_ownership_required]
 
