@@ -64,7 +64,8 @@ INSTALLED_APPS = [
     'countapp',
     'myself',
     'bootstrap4',
-    'profileapp'
+    'profileapp',
+    'articleapp',
 ]
 
 MIDDLEWARE = [
