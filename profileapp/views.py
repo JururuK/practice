@@ -36,3 +36,5 @@ class ProfileUpdateView(UpdateView):
 
     def get_success_url(self):
         return reverse('myself:detail', kwargs={'pk':self.object.user.pk})
+
+
