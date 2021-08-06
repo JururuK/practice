@@ -19,8 +19,6 @@
         }
     </style>
 
-
-
     <div class="container my-4">
         {% for article in article_list %}
             <div>
@@ -35,8 +33,6 @@
     <script src="{% static 'js/magicgrid.js' %}">
 
     </script>
-
-
-
+    {% include 'snippets/pagination.html' %}
 
 {% endblock %}
