@@ -9,8 +9,8 @@ from django.views.generic import CreateView, DetailView
 from projectapp.forms import ProjectCreationForm
 from projectapp.models import Project
 
-@method_decorator(login_required,'get')
-@method_decorator(login_required,'post')
+@method_decorator(login_required(login_url=reverse_lazy('myself:login')),'get')
+@method_decorator(login_required(login_url=reverse_lazy('myself:login')),'get')
 
 class ProjectCreateView(CreateView):
     model = Project
