@@ -8,7 +8,9 @@ from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from django.views.generic.list import MultipleObjectMixin
 
+from articleapp.models import Article
 from myself.decorators import account_ownership_required
 from myself.forms import AccountCreationForm
 from myself.models import NewModel
@@ -42,11 +44,15 @@ class AccountCreateView(CreateView) :
     success_url = reverse_lazy('myself:introduce') #함수에서는 reverse, class 에서는 reverse_lazy
     template_name = 'myself/create.html'
 
-class AccountDetailView(DetailView) :
+class AccountDetailView(DetailView, MultipleObjectMixin) :
     model = User
     context_object_name = 'target_user'
     template_name = 'myself/detail.html'
+    paginate_by = 15
 
+    def get_context_data(self, **kwargs):
+        article_list = Article.objects.filter(writer=self.object)
+        return super().get_context_data(object_list=article_list,**kwargs)
 has_ownership = [login_required,account_ownership_required]
 
 @method_decorator(has_ownership, 'get')
