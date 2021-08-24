@@ -61,7 +61,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'countapp',
     'myself',
     'bootstrap4',
     'profileapp',
@@ -69,6 +68,7 @@ INSTALLED_APPS = [
     'commentapp',
     'projectapp',
     'subscribeapp',
+    'likeapp',
 ]
 
 MIDDLEWARE = [
