@@ -28,7 +28,7 @@ class LikeArticleView(RedirectView):
 
         article.like += 1
         article.save()
-        messages.add_message((request,messages.SUCCESS),"좋아요+1 고맙습니다")
+        messages.add_message(request,messages.SUCCESS,"좋아요+1 고맙습니다")
 
         return super().get(request,*args,**kwargs)
 
