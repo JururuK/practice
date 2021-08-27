@@ -6,7 +6,7 @@
 
     </div>
     <div class="JururuK_header_button">
-        <span class="mx-2">
+        <span class="mx-2">|
             <a href="{% url 'articleapp:list' %}">
                 articles
             </a>
@@ -22,11 +22,7 @@
                 Login
             </a>
         </span>|
-        <span class="mx-2">
-            <a href="{% url 'subscribeapp:list' %}">
-                 Subscribes
-            </a>
-        </span>
+
         <span class="mx-2">
             <a href="{% url 'myself:create' %}">
                  Sign Up
@@ -36,6 +32,11 @@
         <span>
             <a href="{% url 'myself:detail' pk=user.pk %}">
                 MyPage
+            </a>
+        </span>|
+        <span class="mx-2">
+            <a href="{% url 'subscribeapp:list' %}">
+                Subscribes
             </a>
         </span>|
         <span>
