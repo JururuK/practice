@@ -9,7 +9,7 @@ class Article(models.Model):
     writer = models.ForeignKey(User, on_delete=models.SET_NULL,
                                related_name='article', null=True) #지워도 작성자미상의 글로 남도록.
     project = models.ForeignKey(Project,on_delete=models.SET_NULL,
-                                related_name='article',null=True)
+                                related_name='article',null=True,blank=True)
     title = models.CharField(max_length=200,null=True)
     image = models.ImageField(upload_to='article',null=True)
     content = models.TextField(null=True)

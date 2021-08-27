@@ -1,29 +1,37 @@
 <div style = "text-align : center">
     <div class="JururuK_header_logo">  <!-- rem 앞은 상하, 뒤는 좌우 나눔명조 적용이안되면 serif를 적용 -->
-        <h1>JururuK's</h1>
+        <a href="{% url 'main' %}">
+            <h1>JururuK's</h1>
+        </a>
+
     </div>
     <div class="JururuK_header_button">
-        <span>
+        <span class="mx-2">
             <a href="{% url 'articleapp:list' %}">
                 articles
             </a>
         </span>|
-        <span>
+        <span class="mx-2">
             <a href="{% url 'projectapp:list' %}">
                 projects
             </a>
         </span>|
         {% if not user.is_authenticated %}
-        <span>
+        <span class="mx-2">
             <a href="{% url 'myself:login' %}">
                 Login
             </a>
         </span>|
-        <span>
+        <span class="mx-2">
+            <a href="{% url 'subscribeapp:list' %}">
+                 Subscribes
+            </a>
+        </span>
+        <span class="mx-2">
             <a href="{% url 'myself:create' %}">
                  Sign Up
             </a>
-        </span>
+        </span>|
         {% else %}
         <span>
             <a href="{% url 'myself:detail' pk=user.pk %}">
