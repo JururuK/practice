@@ -20,6 +20,8 @@ services:
     volumes:
       - gj_ai_static:/home/practice/staticfiles/
       - gj_ai_media:/home/practice/media/
+    secrets:
+      - DJANGO_SECRET_KEY
 
   mariadb:
     image: mariadb:10.5
@@ -27,6 +29,11 @@ services:
       - gj_ai_network
     volumes:
       - gj_ai_mariadb:/var/lib/mysql
+    secrets:
+      - MARIADB_ROOT_PASSWORD
+      - MARIADB_USER
+      - MARIADB_PASSWORD
+      
     environment:
       MARIADB_ROOT_PASSWORD: password1234
       MARIADB_DATABASE: gj_ai_django
@@ -40,3 +47,14 @@ volumes:
   gj_ai_static:
   gj_ai_media:
   gj_ai_mariadb:
+
+
+secrets:
+  DJANGO_SECRET_KEY:
+    external: true
+  MARIADB_ROOT_PASSWORD:
+    external: true
+  MARIADB_USERR:
+    external: true
+  MARIADB_USER_PASSWORD:
+    external: true
