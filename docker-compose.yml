@@ -14,7 +14,7 @@ services:
       - gj_ai_media:/data/media/
 
   django:
-    image: gj_ai:4
+    image: gj_ai:5
     networks:
       - gj_ai_network
     volumes:
