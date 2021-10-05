@@ -12,6 +12,7 @@ services:
       - /home/ubuntu/nginx.conf:/etc/nginx/nginx.conf
       - gj_ai_static:/data/static/
       - gj_ai_media:/data/media/
+      - gj_ai_log:/var/log/nginx/
 
   django:
     image: gj_ai:5
@@ -49,6 +50,7 @@ volumes:
   gj_ai_static:
   gj_ai_media:
   gj_ai_mariadb:
+  gj_ai_log:
 
 
 secrets:
