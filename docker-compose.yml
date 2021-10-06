@@ -5,7 +5,10 @@ services:
   nginx:
     image: nginx:1.19.5
     ports:
-      - 80:80
+      - mode: host
+        protocol: tcp
+        target: 80
+        published: 80
     networks:
       - gj_ai_network
     volumes:
@@ -13,6 +16,14 @@ services:
       - gj_ai_static:/data/static/
       - gj_ai_media:/data/media/
       - gj_ai_log:/var/log/nginx/
+
+  goaccess:
+    image: allinurl/goaccess:1.5.1
+    volumes:
+      - gj_ai_log:/var/log/nginx/
+    ports:
+      - 7890:7890
+    command: /var/log/nginx/gj_ai_access.log -o /var/log/nginx/report.html --log-format COMBINED --real-time-html
 
   django:
     image: gj_ai:5
