@@ -73,3 +73,5 @@ secrets:
     external: true
   MARIADB_PASSWORD:
     external: true
+  NGINX_AUTH:
+    external: true
