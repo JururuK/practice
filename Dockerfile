@@ -8,6 +8,7 @@ RUN git clone https://github.com/JururuK/practice.git
 
 WORKDIR /home/practice/
 
+
 RUN pip install -r requirements.txt
 
 RUN pip install gunicorn

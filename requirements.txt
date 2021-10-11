@@ -7,3 +7,6 @@ Pillow==8.3.1
 pytz==2021.1
 soupsieve==2.2.1
 sqlparse==0.4.1
+requests==2.20.0
+torch==1.8.0
+transformers==3.0.2
